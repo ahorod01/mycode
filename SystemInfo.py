@@ -1,3 +1,9 @@
+"""
+Filename....: SystemInfo.py
+Author......: Alex Horodenski
+Created.....: 2026-08-25
+Last Updated: 2026-08-25
+"""
 #pip install psutil
 #pip install pyttsx3
 #pip install ifaddr
