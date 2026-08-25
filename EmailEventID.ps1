@@ -13,7 +13,7 @@ $Subject ="Alert From $MachineName"
 $Body = "EventID: $EventID`nSource: $Source`nMachineName: $MachineName `nMessage: $Message"
 $SMTPServer = "obx-inbound.inkyphishfence.com"
 write-host $body
-exit
+
 $SMTPClient = New-Object Net.Mail.SmtpClient($SmtpServer, 587)
 $SMTPClient.EnableSsl = $true
 $SMTPClient.Credentials = New-Object System.Net.NetworkCredential("{user/email}", "{mypassword}");
