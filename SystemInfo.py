@@ -4,6 +4,7 @@ Author......: Alex Horodenski
 Created.....: 2026-08-25
 Last Updated: 2026-08-25
 """
+#If not already installed you will need to install the following first.
 #pip install psutil
 #pip install pyttsx3
 #pip install ifaddr
