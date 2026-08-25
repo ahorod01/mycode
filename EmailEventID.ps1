@@ -11,7 +11,7 @@ $EmailFrom = "{myfromemailaddress"
 $EmailTo = "{myemailaddress}"
 $Subject ="Alert From $MachineName"
 $Body = "EventID: $EventID`nSource: $Source`nMachineName: $MachineName `nMessage: $Message"
-$SMTPServer = "obx-inbound.inkyphishfence.com"
+$SMTPServer = "{SMTPserver}"
 write-host $body
 
 $SMTPClient = New-Object Net.Mail.SmtpClient($SmtpServer, 587)
