@@ -1,28 +1,57 @@
 """
+------------------------------------------
 Filename....: SystemInfo.py
 Author......: Alex Horodenski
 Created.....: 2026-08-25
 Last Updated: 2026-08-25
+------------------------------------------
 """
-#If not already installed you will need to install the following first.
+import sys
+import subprocess
+
+def is_module_installed(module_name):
+    try:
+        __import__(module_name)
+        return True
+    except ImportError:
+        return False
+
+def install_module(module_name):
+    subprocess.check_call([sys.executable, '-m', 'pip', 'install', module_name], stdout=subprocess.DEVNULL)
+
+# Example usage
 #pip install psutil
 #pip install pyttsx3
 #pip install ifaddr
 #pip install python-nmap
+package_name = 'psutil'
+if not is_module_installed(package_name):
+    install_module(package_name)
+package_name = 'pyttsx3'
+if not is_module_installed(package_name):
+    install_module(package_name)
+package_name = 'ifaddr'
+if not is_module_installed(package_name):
+    install_module(package_name)
+package_name = 'python-nmap'
+if not is_module_installed(package_name):
+    install_module(package_name)     
+    
+
 import platform
 import shutil
 import os
-import sys
-import pyttsx3
+#import pyttsx3
 import psutil
 import ifaddr
 import socket
-import subprocess
 import winreg
 import time
 
 from datetime import datetime
 
+#---------------------------------------------------------------------
+#GENERAL FUNCTIONS DEFINITIONS HERE
 #---------------------------------------------------------------------
 #os.system('cls' if os.name == 'nt' else 'clear')
 def clear_screen():
@@ -138,14 +167,14 @@ BEGIN HERE
 """
 clear_screen()
 
-engine = pyttsx3.init()
-text   = "Here is your system information"
+#engine = pyttsx3.init()
+#text   = "Here is your system information"
 #engine.say(text)
 #engine.runAndWait()
 
 #print("Hostname: " + platform.node())
 hostname = socket.gethostname()
-IPAddr   = socket.gethostbyname(hostname)
+IPAddr   = socket.gethostbyname(hostname)           
 print("Your Computer Name is......:", hostname)
 print("Your Computer IP Address is:", IPAddr)
 print(f"Architecure................: {platform.machine()}")
