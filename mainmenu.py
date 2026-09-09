@@ -27,7 +27,6 @@ def mainmenu():
             output_file = os.path.abspath("system_report.html")
             #os.startfile(output_file)  
             #More robust way to open HTML file          
-            output_file = os.path.abspath("system_report.html")
             edge_paths = [
                 r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe",
                 r"C:\Program Files\Microsoft\Edge\Application\msedge.exe",
