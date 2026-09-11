@@ -7,14 +7,14 @@ $MachineName = $A.MachineName
 $Source = $A.ProviderName
 
 
-$EmailFrom = "{myfromemailaddress"
-$EmailTo = "{myemailaddress}"
+$EmailFrom = "alert@astechep.com"
+$EmailTo = "ahorodenski@astechep.com"
 $Subject ="Alert From $MachineName"
 $Body = "EventID: $EventID`nSource: $Source`nMachineName: $MachineName `nMessage: $Message"
-$SMTPServer = "{SMTPserver}"
+$SMTPServer = "obx-inbound.inkyphishfence.com"
 write-host $body
-
+exit
 $SMTPClient = New-Object Net.Mail.SmtpClient($SmtpServer, 587)
 $SMTPClient.EnableSsl = $true
-$SMTPClient.Credentials = New-Object System.Net.NetworkCredential("{user/email}", "{mypassword}");
+$SMTPClient.Credentials = New-Object System.Net.NetworkCredential("ahorodenski@astechep.com", "Sissie1977");
 $SMTPClient.Send($EmailFrom, $EmailTo, $Subject, $Body)

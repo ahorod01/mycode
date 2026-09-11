@@ -4,7 +4,7 @@ function OpenConnection () {
     # $connectionString = "Server=localhost\AdminSystem;Database=dbname;User Id=user;Password=yourpassword;MultipleActiveResultSets=True;"
     # https://msdn.microsoft.com/en-us/library/system.data.sqlclient.sqlconnection.connectionstring(v=vs.110).aspx
 
-    $connectionString = "Server={Server/Instance};Database=Utilities;Integrated security=SSPI;MultipleActiveResultSets=True;"
+    $connectionString = "Server=ast-sna-sq01;Database=Utilities;Integrated security=SSPI;MultipleActiveResultSets=True;"
     #Write-Host(("Connecting database {0} ..." -f $connectionString))
     $sqlConnection = New-Object System.Data.SqlClient.SqlConnection
     $sqlConnection.ConnectionString = $connectionString
@@ -26,9 +26,9 @@ else {
 }
 
 
-$sqlinstance = "{Server/Instance}"
-$squeekal_U  = "{user}"
-$squeekal_P  = "{mypassword}"
+$sqlinstance = "ast-sna-sq01"
+$squeekal_U  = "sa"
+$squeekal_P  = "HAsv=p5V]j6^<Dp%TjZ!"
 
 $params = @{
     'Database'       = "Utilities";
