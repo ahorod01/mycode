@@ -31,7 +31,7 @@ catch{
 
 # Define Menus
 function Show-MainMenu  {
-    Clear-Host -Full
+    #Clear-Host -Full
     Write-Host "===================================== Menu =====================================" -ForegroundColor Cyan -BackgroundColor Yellow
     Write-Host " 1. Show System Hostname          IA. Get AssetInventory for SnipeIT to import  "
     Write-Host " 2. Show System IP Addresses      S.  Get Service List                          "
@@ -42,8 +42,8 @@ function Show-MainMenu  {
     Write-Host " 7. Boot into BIOS                U.  Up Time / Boot Time                       "
     Write-Host " 8. BIOS                          V.  Windows Version/Memory                    "
 	Write-Host " 9. Product Key                   W.  Wifi Mac Address                          "	
-    Write-Host "10. God Mode                      LU. List all Local User Accounts              " 	
-	Write-Host "                                  MS. Connect to MS365 PowerShell               "
+    Write-Host "10. Activate Windows              LU. List all Local User Accounts              " 	
+	Write-Host "11. God Mode                      MS. Connect to MS365 PowerShell               "
     Write-Host "AT. Admin Tools                   NS. Network Tools Menu                        "
     Write-Host "--------------------------------------------------------------------------------"
     Write-Host " The Following require Admin Rights "       -ForegroundColor Yellow -BackgroundColor Green	
@@ -169,11 +169,18 @@ function Get-Menu      {
             '8' { BIOS }
             '9' { Write-Host ""
                   (Get-CimInstance -ClassName SoftwareLicensingService).SubscriptionEdition
-                  (Get-CimInstance -ClassName SoftwareLicensingService).OA3xOriginalProductKey
-                  Write-Host ""
+                  $key=(Get-CimInstance -ClassName SoftwareLicensingService).OA3xOriginalProductKey
+                  Write-Host $key
+                  cmd.exe /c "slmgr.vbs /dli"
+                  cmd.exe /c "slmgr.vbs /dlv"
                   pause
                 }
-            '10'{ explorer "shell:::{ED7BA470-8E54-465E-825C-99712043E01C}"}            
+            '10'{ cmd.exe /c "slmgr.vbs /ipk " + $key
+                  cmd.exe /c "slmgr.vbs /ato"
+                  cmd.exe /c "slmgr.vbs /dli"
+                  pause  
+                }
+            '11'{ explorer "shell:::{ED7BA470-8E54-465E-825C-99712043E01C}"}            
             '50'{ cmd.exe /c "userpwlz"}
             'AJ'{ Check-Admin
                   cmd.exe /c "dsregcmd /status |more"  
