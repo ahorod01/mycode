@@ -31,62 +31,64 @@ catch{
 
 # Define Menus
 function Show-MainMenu  {
-    Clear-Host
+    Clear-Host -Full
     Write-Host "===================================== Menu =====================================" -ForegroundColor Cyan -BackgroundColor Yellow
-    Write-Host " 1. Show System Hostname          IA. Get AssetInventory for SnipeIT to import"
-    Write-Host " 2. Show System IP Addresses      S.  Get Service List"
-    Write-Host " 3. List Running Processes        SS. System Summary"
-    Write-Host " 4. Last 10 Event Logs            SD. System Detail" 
-    Write-Host " 5. Reboot                        U.  Up Time / Boot Time"
-    Write-Host " 6. Shutdown                      V.  Windows Version/Memory"
-	Write-Host " 7. Boot into BIOS                W.  Wifi Mac Address"	
-    Write-Host " 8. BIOS                          LU. List all Local User Accounts"	
-	Write-Host " 9. Product Key                   MS. Connect to MS365 PowerShell"
-    Write-Host "10. God Mode                      NS. Network Tools Menu"
-	Write-Host ""
+    Write-Host " 1. Show System Hostname          IA. Get AssetInventory for SnipeIT to import  "
+    Write-Host " 2. Show System IP Addresses      S.  Get Service List                          "
+    Write-Host " 3. List Running Processes        SS. System Summary                            "
+    Write-Host " 4. Last 10 Event Logs            SD. System Detail                             " 
+    Write-Host " 5. Reboot                        PM. Pefromance Montitor                       "
+    Write-Host " 6. Shutdown                      RM. Reliabiltiy Monitor                       "
+    Write-Host " 7. Boot into BIOS                U.  Up Time / Boot Time                       "
+    Write-Host " 8. BIOS                          V.  Windows Version/Memory                    "
+	Write-Host " 9. Product Key                   W.  Wifi Mac Address                          "	
+    Write-Host "10. God Mode                      LU. List all Local User Accounts              " 	
+	Write-Host "                                  MS. Connect to MS365 PowerShell               "
+    Write-Host "AT. Admin Tools                   NS. Network Tools Menu                        "
+    Write-Host "--------------------------------------------------------------------------------"
     Write-Host " The Following require Admin Rights "       -ForegroundColor Yellow -BackgroundColor Green	
-    Write-Host "AU. Update All Software Applications       DS. Check Driver Signature"	
+    Write-Host "WU. Windows/App Update                     DS. Check Driver Signature"	
 	Write-Host "BL. Get BitLocker Status                   H.  Edit HOSTS file"
     Write-Host "BA. Activate BitLocker                     IT. Install AD Remote Tools"    
     Write-Host "GA. Get AutoPilot data, Save to CSV        T.  Get TPM Status"	    
     Write-Host "AJ. Check Azure AD Join                    SC. System Clean Up Menu"
     Write-Host "I.  Enroll in Intune MDM                   VS. Volume Shadow Menu"
     Write-Host "US. Disable Uneccessary Services           SM. Windows Services Menu"
-    Write-Host "WU. Windows Update no Reboot               EF. Enable Fingerprint Reader"
-    Write-Host "WR. Windows Update with Reboot             "	
-    Write-Host "WS. Windows Selective Updates              50. User Profiles"	
-    Write-Host ""
+    Write-Host "EF. Enable Fingerprint Reader              SA. System Administration"
+    Write-Host ""	
     Write-Host "===============================================================================" -ForegroundColor Cyan    
     Write-Host "Q.  Quit    RF. Run Forrest   RP. Dancing Parrot    AS. # of People in Space   " -ForegroundColor Yellow
     Write-Host "===============================================================================" -ForegroundColor Cyan    
 }
 function Show-SubMenu01 {
-    Clear-Host
+    Clear-Host -Full
     Write-Host "========================== System Clean up - Sub Menu =========================" -ForegroundColor Black -BackgroundColor Yellow
-    Write-Host " 1. Clean Temp Folders" 
-    Write-Host " 2. Clean Windows Update"
-    Write-Host " 3. Disk Cleaner"
-    Write-Host " 4. System Online Clean up"
-    Write-Host " 5. System Scan (SFC /SCANNOW)"	
-    Write-Host " 6. System Scan Log"
+    Write-Host " 1. Clean Temp Folders                                                         " 
+    Write-Host " 2. Clean Windows Update                                                       "
+    Write-Host " 3. Disk Cleaner                                                               "
+    Write-Host " 4. System Online Clean up                                                     "
+    Write-Host " 5. System Scan (SFC /SCANNOW)                                                 "	
+    Write-Host " 6. System Scan Log                                                            "
     Write-Host "===============================================================================" -ForegroundColor Cyan    
     Write-Host "Q.  Return to Main Menu                                                        " -ForegroundColor Yellow
     Write-Host "===============================================================================" -ForegroundColor Cyan 	
 }
 function Show-SubMenu02 {
-    Clear-Host
+    Clear-Host -Full
     Write-Host "========================== Volume Shadow - Sub Menu =========================" -ForegroundColor Black -BackgroundColor Yellow
     Write-Host " 1. List Shadows" 
     Write-Host " 2. Delete All Shadows"
     Write-Host " 3. Delete Oldest Shadows"
     Write-Host " 4. List Writers"
     Write-Host " 5. List Providers"	
+    Write-Host " 6. Enable Volume Shadow"
+    Write-Host " 7. Create Restore Point"
     Write-Host "==============================================================================" -ForegroundColor Cyan    
     Write-Host "Q.  Return to Main Menu                                                       " -ForegroundColor Yellow
     Write-Host "==============================================================================" -ForegroundColor Cyan 	
 }
 function Show-SubMenu03 {
-    Clear-Host
+    Clear-Host -Full
     Write-Host "========================== Network Tools - Sub Menu =========================" -ForegroundColor Black -BackgroundColor Yellow
     Write-Host " 1. Address Resolution Protocol (ARP)" 
     Write-Host " 2. Network Status (NETSTAT)"
@@ -100,24 +102,38 @@ function Show-SubMenu03 {
     Write-Host "10. Clear DNS Cache"
     Write-Host "11. Show DNS Servers"
     Write-Host "12. Show default Gateway"    
+    Write-Host "13. Get Hostname"  
+    Write-Host "14. Get IP Address"  
     Write-Host "=============================================================================" -ForegroundColor Cyan    
     Write-Host "Q.  Return to Main Menu                                                      " -ForegroundColor Yellow
     Write-Host "=============================================================================" -ForegroundColor Cyan 	
     get-service dnscache,dhcp,TermService,WlanSvc |ft Displayname,Status
 }
 function Show-SubMenu04 {
-    Clear-Host
+    Clear-Host -Full
     Write-Host "========================== Services - Sub Menu =========================" -ForegroundColor Black -BackgroundColor Yellow
-    Write-Host " 1. List Windows Services" 
-    Write-Host " 2. Service Control"
-    Write-Host " 3. "
-    Write-Host " 4. "
-    Write-Host " 5. Delete Service, cannot undo!!!"	
+    Write-Host " 1. List Windows Services                                               " 
+    Write-Host " 2. Service Control                                                     "
+    Write-Host " 3.                                                                     "
+    Write-Host " 4.                                                                     "
+    Write-Host " 5. Delete Service, cannot undo!!!                                      "	
+    Write-Host "========================================================================" -ForegroundColor Cyan    
+    Write-Host "Q.  Return to Main Menu                                                 " -ForegroundColor Yellow
+    Write-Host "========================================================================" -ForegroundColor Cyan 	
+}
+function Show-SubMenu05 {
+    Clear-Host -Full
+    Write-Host "======================= Windows Updates - Sub Menu ======================" -ForegroundColor Black -BackgroundColor Yellow
+    Write-Host "1. Update All Software Applications                                      "
+    Write-Host "2. Windows Update no Reboot                                              "
+    Write-Host "3. Windows Update with Reboot                                            "	
+    Write-Host "4. Windows Selective Updates                                             "
+    Write-Host "5. Reset Windows Updates                                                 "
+    Write-Host "                                                                         "
     Write-Host "=========================================================================" -ForegroundColor Cyan    
     Write-Host "Q.  Return to Main Menu                                                  " -ForegroundColor Yellow
     Write-Host "=========================================================================" -ForegroundColor Cyan 	
 }
-
 # Process Menus
 function Get-Menu      {
 	
@@ -163,11 +179,9 @@ function Get-Menu      {
                   cmd.exe /c "dsregcmd /status |more"  
                   pause
                 }
-			'AU'{ Add-AppxPackage -RegisterByFamilyName -MainPackage Microsoft.DesktopAppInstaller_8wekyb3d8bbwe
-                  cmd.exe /c "winget upgrade --all" 
-				  Pause 
-				}
+
 			'AS'{ Astronauts }	
+            'AT'{ cmd.exe /c "%windir%\system32\control.exe /name Microsoft.AdministrativeTools"}
             
 			'BA'{ Check-Admin
 				  Add-BitLockerKeyProtector -MountPoint "C:" -TpmProtector
@@ -207,11 +221,13 @@ function Get-Menu      {
 				exit
 			    }
 			'NS'{ Get-SubMenu03 } #Network Tools Sub-menu 
+            'PM'{ cmd /c "perfmon" }
             'RA'{ Run-Admin }  # restart w/ Admin Rights
             'RF'{ write-host "Crtl + C to quit, you will need to restart MENU"
 				  pause
 				  cmd /c "curl ascii.live/forrest"
 				}
+            'RM'{ cmd /c "perfmon /rel" }
 			'RP'{ write-host "Crtl + C to quit, you will need to restart MENU"
 				  pause
 				  cmd /c "curl ascii.live/parrot"				  
@@ -221,6 +237,7 @@ function Get-Menu      {
 				  cmd /c "curl ascii.live/rick"
                 }				  
             'S' { get-service |out-gridview } 
+            'SA'{cmd /c "sysdm.cpl"}
             'SC'{ Get-SubMenu01 } #System Clean Sub-menu 
             'SD'{ System }            
             'SM'{ #Check-Admin
@@ -236,14 +253,8 @@ function Get-Menu      {
             'VS'{ Check-Admin
                   Get-SubMenu02 
                 } #Volume Shadow Sub-menu
-            'W' { SystemWeeFeeMac }
-			'WR'{ WinUpdate
-				  Restart-Computer -Force
-                  Write-Host "Reboot initiated..."
-                  exit	
-                }
-            'WS'{ WinUpdateSelect }
-			'WU'{ WinUpdate }      
+            'W' { SystemWeeFeeMac } 
+            'WU'{ Get-SubMenu05 } #Windows/App Update Sub-menu               
 
             'SM'{ Check-Admin
                   Get-SubMenu01 
@@ -305,7 +316,10 @@ function Get-SubMenu02 {
             '5'{ vssadmin list providers              
                  pause                
                }
-            
+            '6'{ EnableVolShadow -DriveLetter "C:" -MaxSize "10GB" }
+            '7'{ Write-Host "Creating shadow copy..." -ForegroundColor RED        
+                 (gwmi -list win32_shadowcopy).Create("$($DriveLetter)\","ClientAccessible")
+               }
             'Q'{ Get-Menu } #return to main menu
         }
     }
@@ -344,7 +358,7 @@ function Get-SubMenu03 {
             '7'{ TestNetwork }
             '8'{ $lookupHost = Read-Host "Enter host to lookup"
                  if ($lookupHost -ne "" ){
-                    Clear-Host
+                    Clear-Host -Full
                     $job=Start-Job -ScriptBlock {
                         param ($lookupHost)
                         Resolve-DnsName -Name $lookupHost -Type All
@@ -362,7 +376,9 @@ function Get-SubMenu03 {
                  pause
                }
            '12'{ DefaultGW }
-            'Q'{ Clear-Host
+           '13'{ SystemHostname }
+           '14'{ SystemIPAddresses }
+           'Q'{ Clear-Host -Full
                  Get-Menu 
                } #return to main menu
         }
@@ -379,6 +395,55 @@ function Get-SubMenu04 {
                }
 			'2'{ ServiceState }
             '5'{ ServiceDelete }
+            'Q'{ Get-Menu } #return to main menu
+        }
+    }
+}
+function Get-SubMenu05 {
+    $loop = $true
+    while ($loop) {
+        Show-SubMenu05        
+        $selection = Read-Host "Enter your choice"
+        switch ($selection.ToUpper()) {
+			'1'{ Add-AppxPackage -RegisterByFamilyName -MainPackage Microsoft.DesktopAppInstaller_8wekyb3d8bbwe
+                  #cmd.exe /c "winget upgrade --all" 
+                  winget upgrade --all
+				  Pause 
+				}
+			'2'{ WinUpdate
+				  Restart-Computer -Force
+                  Write-Host "Reboot initiated..."
+                  exit	
+                }
+            '3'{ WinUpdateSelect }
+			'4'{ WinUpdate } 
+            '5'{ Check-Admin
+                 Write-Host "Stopping Services..."
+                 net stop wuauserv
+                 net stop "Smartlocker Filter Driver"
+                 net stop "Application Identity"
+                 net stop cryptSvc
+                 net stop bits
+                 net stop msiserver
+                 Write-Host "Deleting Files..."
+                 remove-item C:\Windows\SoftwareDistribution\* -recursive
+                 remove-item C:\Windows\System32\catroot2\* -recursive
+                 Write-Host "Registering DLLs..."
+                 regsvr32 /s wuapi.dll
+                 regsvr32 /s wuaueng.dll
+                 regsvr32 /s wups.dll
+                 regsvr32 /s wups2.dll
+                 regsvr32 /s wuwebv.dll
+                 regsvr32 /s wucltux.dll
+                 Write-Host "Restarting Services..."
+                 net start msiserver
+                 net start bits
+                 net start "Application Identity"
+                 net start "Smartlocker Filter Driver"
+                 net start cryptSvc
+                 net start wuauserv
+                 pause
+               } 
             'Q'{ Get-Menu } #return to main menu
         }
     }
@@ -548,15 +613,15 @@ function EnableFinger{
 	pause
 }
 function EvntLog {	
-    Clear-Host
+    Clear-Host -Full
     Write-Host "APPLICTION LOGS"  -ForegroundColor Green
     Get-WinEvent -LogName Application -MaxEvents 10 -FilterXPath "*[System[(Level=2)]]"
     pause
-    Clear-Host
+    Clear-Host -Full
     Write-Host "SYSTEM LOGS"  -ForegroundColor Green
     Get-WinEvent -LogName System -MaxEvents 10 -FilterXPath "*[System[(Level=2)]]"
     pause
-    Clear-Host
+    Clear-Host -Full
     Write-Host "SECURITY LOGS"  -ForegroundColor Green
     Get-WinEvent -LogName Security -MaxEvents 10 -FilterXPath "*[System[(Level=2)]]"
     pause    
@@ -586,6 +651,49 @@ function DefaultGW {
     }
     catch {
         Write-Error "Error retrieving default route: $_"
+    }
+    pause
+}
+function EnableVolShadow {
+    param (
+        [Parameter(Mandatory = $true)]
+        [ValidatePattern("^[A-Z]:$")]
+        [string]$DriveLetter,
+
+        [Parameter(Mandatory = $true)]
+        [ValidatePattern("^\d+(KB|MB|GB|TB)$|^UNBOUNDED$")]
+        [string]$MaxSize
+    )
+
+    try {
+        # Check if running as Administrator
+        if (-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
+            throw "This script must be run as Administrator."
+        }
+
+        # Enable VSS on the drive
+        Write-Host "Enabling Volume Shadow Copy on $DriveLetter with max size $MaxSize..." -ForegroundColor Cyan
+        $enableCmd = "vssadmin add shadowstorage /for=$DriveLetter /on=$DriveLetter /maxsize=$MaxSize"
+        #Invoke-Expression $enableCmd
+        write-host '(gwmi -list win32_shadowcopy).Create("$($DriveLetter)\","ClientAccessible")'
+        (gwmi -list win32_shadowcopy).Create("$($DriveLetter)\","ClientAccessible")
+        
+        
+
+        # Create an initial shadow copy
+        Write-Host "Creating initial shadow copy..." -ForegroundColor Cyan        
+        #following is only for Windows Server
+        #$createCmd = "vssadmin create shadow /for=$DriveLetter"        
+        #Invoke-Expression $createCmd
+        #the following is for Windows 11+
+        (gwmi -list win32_shadowcopy).Create("$($DriveLetter)\","ClientAccessible")
+        
+        
+
+        Write-Host "Volume Shadow Copy enabled successfully on $DriveLetter." -ForegroundColor Green
+    }
+    catch {
+        Write-Host "Error: $($_.Exception.Message)" -ForegroundColor Red
     }
     pause
 }
@@ -763,7 +871,7 @@ function ServiceState2 {
 		'7'{ ServiceState }
         'Q'{ Get-SubMenu04 } #return to sub menu
     }
-    clear-host
+    Clear-Host -Full
     Write-Host "----------------------------------------------------------"
     get-service -Name $SrvcName | select -property name,status,displayname,starttype    
     Write-Host "----------------------------------------------------------"
